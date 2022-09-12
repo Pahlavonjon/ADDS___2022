@@ -7,4 +7,4 @@ int factorial(int value,int n){
 }
 int main(void) {
     cout << "\n "<<factorial(1,19)<<"\n";
-}
+} // user pointer for polymorphism
