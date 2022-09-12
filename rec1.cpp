@@ -8,3 +8,5 @@ int factorial(int value,int n){
 int main(void) {
     cout << "\n "<<factorial(1,19)<<"\n";
 } // user pointer for polymorphism
+// Document* Harry_Potter = new Book;
+// Harry_Potter->return_author()    // polymorphism?
