@@ -5,7 +5,7 @@ int factorial(int value,int n){
         return value;
     return factorial(value*(n),n-1);
 }
-int main(void) {
+int main(void){
     cout << "\n "<<factorial(1,19)<<"\n";
 } // user pointer for polymorphism
 // Document* Harry_Potter = new Book;
