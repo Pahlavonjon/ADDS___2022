@@ -1,4 +1,4 @@
-#include <iostream>
+#include <iostream> // recursion implementation for exponential function
 using namespace std;
 double exponential(double x, double n){
     if (n == 0)
