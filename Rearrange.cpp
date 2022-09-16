@@ -13,11 +13,11 @@ Individual* Rearrange::mutate(Individual* This_person,int k){
     string* the_whole_list = new string;
     *the_whole_list = This_person->getString();
 
-    string first_half = (*(the_whole_list)).substr(0,k);
-    string second_half = (*(the_whole_list)).substr(k+1,This_person->getLength()-k);
+    string first_half = (*(the_whole_list)).substr(0,k-1);
+    string second_half = (*(the_whole_list)).substr(k-1,This_person->getLength());
     
     *the_whole_list = (second_half + first_half);
-    cout << " whole list is " << *the_whole_list<<"\n";
+   // cout << " whole list is " << *the_whole_list<<"\n";
     This_person->update_list(*the_whole_list);
     return This_person;
 }

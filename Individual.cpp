@@ -1,5 +1,6 @@
 #include "Individual.h"
 #include <string>
+#include <iostream>
 using namespace std;
 Individual::Individual(){
     this->Adenine = "00";
@@ -26,16 +27,19 @@ int Individual::getBit(int pos){
     return (this->binaryString[pos]);
 } //: The function returns the bit value at position pos. It should return -1 if pos is out of bound..
 void Individual::flipBit(int pos){
-    if (pos <= 7 || pos >= 0){
-        if (binaryString[pos] == '0') 
-            binaryString[pos] = '1';
-        binaryString[pos] = '0';
+    if (pos <= 7 && pos >= 0){
+        if (binaryString.at(pos-1) == '0'){ 
+            binaryString.at(pos-1) = '1';
+        }
+        else {
+            binaryString.at(pos-1) = '0';
+        }
     }
 } //: The function takes in the position of the certain bit and flip the bit value.
 int Individual::getMaxOnes(){
     int length_streak = 0;
     bool on_a_steak = false;
-    for (int k = 0; k < 8; k++){
+    for (int k = 0; k < getLength(); k++){
         if (binaryString[k] == '1' && binaryString[k+1] == '1'){ // , 
             if (on_a_steak == false){
                 length_streak += 2;
