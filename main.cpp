@@ -27,7 +27,7 @@ void test_1(){
 //     vector<int> Vector_Map_Numbers_Squared = Square_Number.map(Vector_Map_Numbers);
 //     vector<int> Vector_Map_Numbers_Absoluted = Absolute_Number.map(Vector_Map_Numbers_Negative);
 //    // int Vector_Size = Vector_Map_Numbers.size();
-       int Current_element = 0;
+       int Current_element = 0; uvy
 
 //     // cout << "\n";
 //     // Test__Function__One__(Vector_Map_Numbers,Vector_Map_Numbers_Tripled,Current_element,Vector_Size);
