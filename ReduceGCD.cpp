@@ -14,6 +14,6 @@ int ReduceGCD::reduce(vector<int> The_Vector){
     }
     int first = The_Vector.at(index);
     this->index++;
-    int second = reduce(The_Vector);
+    int second = reduce(The_Vector); // recursion here
     return __gcd(first,second); 
 }
