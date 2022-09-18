@@ -26,7 +26,6 @@ int main(void){
     int max_ones = 0;
     if (John.getMaxOnes() > Jake.getMaxOnes()){
         max_ones = John.getMaxOnes();
-        cout << "jons";
     }
     else {
         max_ones = Jake.getMaxOnes();
