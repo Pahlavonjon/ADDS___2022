@@ -10,6 +10,7 @@
 #include "FilterForTwoDigitPositive.h"
 #include "ReduceGeneric.h"
 #include "ReduceMinimum.h"
+#include "ReduceGCD.h"
 using namespace std;
 void Test__Function__One__(vector<int> Vector_Original, vector<int> Vector_Modified, int Current_element, int Vector_Size){
     cout << "\n\n";
@@ -27,7 +28,7 @@ void test_1(){
 //     vector<int> Vector_Map_Numbers_Squared = Square_Number.map(Vector_Map_Numbers);
 //     vector<int> Vector_Map_Numbers_Absoluted = Absolute_Number.map(Vector_Map_Numbers_Negative);
 //    // int Vector_Size = Vector_Map_Numbers.size();
-       int Current_element = 0; uvy
+       int Current_element = 0; 
 
 //     // cout << "\n";
 //     // Test__Function__One__(Vector_Map_Numbers,Vector_Map_Numbers_Tripled,Current_element,Vector_Size);
@@ -50,23 +51,89 @@ void test_1(){
     Test__Function__One__(Vector_Filter_Numbers,Vector_Filter_Numbers_Positives,Current_element,Vector_Filter_Numbers_Positives.size());
     cout << "\n\n";
 } 
-int main(void){
+void test_2(){
     vector <int> Test_2 = {6, -11, 53, -16, 73, 128, 105, 104, -71, -179, 102, 12, 21, -145, -99, 199,-156, -186, 43, -189};
     cout << "\n\n";
     ReduceMinimum Find_minimum;
     MapTriple Convert_to_triple;
+    MapAbsoluteValue Positives_only;
     FilterForTwoDigitPositive Convert_to_two_digit_positive;
-   // Convert_to_two_digit_positive.filter(Convert_to_triple.map(Test_2));
-    
-    cout << " The minimum is: "<<Find_minimum.reduce(Convert_to_two_digit_positive.filter(Convert_to_two_digit_positive.filter(Convert_to_triple.map(Convert_to_triple.map(Test_2)))))<<"\n";
-    cout << "\n\n";
+    FilterOdd Filter_Odds;
+    ReduceGCD GCD_only;
 
+    int length = Test_2.size();
+    Test_2 = Convert_to_triple.map(Test_2);
+    Test_2 = Positives_only.map(Test_2);
+    length = Test_2.size();
+
+    for (int k = 0; k < length; k++){
+        cout << " "<<Test_2.at(k);
+    }
+    cout <<"\n";
+
+    Test_2 = Convert_to_two_digit_positive.filter(Test_2);
+    length = Test_2.size();
+
+    for (int k = 0; k < length; k++){
+        cout << " "<<Test_2.at(k);
+    }
+    cout <<"\n";
+    Test_2 = Filter_Odds.filter(Test_2); 
+
+    length = Test_2.size();
+    for (int k = 0; k < length; k++){
+        cout << " "<<Test_2.at(k);
+    }
+    cout << "\n";
+
+    cout << " The minimum is: "<< Find_minimum.reduce(Test_2)<< "  "<<GCD_only.reduce(Test_2)<<"\n\n";
+    cout << "\n\n";
+}
+void Test_3(){
+    vector <int> Test_2 = {-5, -24, -123, -81, 200, 157, 84, 67, -83, -60, -72, 192, -25, -20, -50, -181,-70, -15, -108, -123};
+    vector <int> Test_3 = {2,4,6,8,10};
+    cout << "\n\n";
+    ReduceMinimum Find_minimum;
+    MapTriple Convert_to_triple;
+    MapAbsoluteValue Positives_only;
+    FilterForTwoDigitPositive Convert_to_two_digit_positive;
+    FilterOdd Filter_Odds;
+    ReduceGCD GCD_only;
+    int length = Test_2.size();
+    Test_2 = Convert_to_triple.map(Test_2);
+    Test_2 = Positives_only.map(Test_2);
+
+    for (int k = 0; k < length; k++){
+        cout << " "<<Test_2.at(k);
+    }
+    cout <<"\n";
+    Test_2 = Convert_to_two_digit_positive.filter(Test_2);
+
+    length = Test_2.size();
+    for (int k = 0; k < length; k++){
+        cout << " "<<Test_2.at(k);
+    }
+    cout <<"\n";
+    Test_2 = Filter_Odds.filter(Test_2); 
+
+    length = Test_2.size();
+    for (int k = 0; k < length; k++){
+        cout << " "<<Test_2.at(k);
+    }
+    cout << "\n";
+
+    cout << " The minimum is: "<< Find_minimum.reduce(Test_2)<< "  "<<GCD_only.reduce(Test_2)<<"\n\n";
+    cout << "\n\n";
+}
+int main(void){
+    test_2();
+    Test_3();
     return 0;
 }
 
 
 
-
+// Find_minimum.reduce(Convert_to_two_digit_positive.filter(Convert_to_two_digit_positive.filter(Convert_to_triple.map(Convert_to_triple.map(Test_2)))))<<"\n";
 
  // over riding is the exact same function signature but different implementation
  // overloading is when the function type or the parameters type and order are different but same function same

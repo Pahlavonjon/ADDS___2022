@@ -4,8 +4,8 @@
 #include "MapGeneric.h"
 class MapAbsoluteValue : private MapGeneric {
     private:
-        unsigned int Vector_Size;
-        unsigned int Current_element;
+        int Vector_Size;
+        int Current_element;
         int f( int x);
     public:
         MapAbsoluteValue();

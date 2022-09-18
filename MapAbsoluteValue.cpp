@@ -12,5 +12,7 @@ vector<int> MapAbsoluteValue::map(vector<int> The_Vector){
     return map(The_Vector);
 }
 int MapAbsoluteValue::f(int x){
-    return x*-1;
+    if (x < 0)
+        return x*-1;
+    return x;
 }
