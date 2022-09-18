@@ -24,12 +24,8 @@ int main(void){
     execute(&John,&Flip_bits,k1);
     execute(&Jake,&Change_order,k2);
     int max_ones = 0;
-    if (John.getMaxOnes() > Jake.getMaxOnes()){
-        max_ones = John.getMaxOnes();
-    }
-    else {
-        max_ones = Jake.getMaxOnes();
-    }
+    max_ones = Jake.getMaxOnes();
+    
     cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";    
     return 0;
 }

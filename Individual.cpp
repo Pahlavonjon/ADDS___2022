@@ -53,6 +53,8 @@ int Individual::getMaxOnes(){
             on_a_steak = false;
         }
     }
+    if (length_streak == 0)
+        length_streak = 1;
     return length_streak;
 } //: The function returns the longest consecutive sequence of ‘1’ digits in the list (e.g. calling the function on “1001110” will obtain 3).
 int Individual::getLength(){
