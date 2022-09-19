@@ -1,30 +1,18 @@
 #include <iostream>
-#include <string>
-#include "Individual.h"
-#include "Mutator.h"
-#include "BitFlip.h"
-#include "Rearrange.h"
+#include <vector>
+#include "Sort.h"
+#include "BubbleSort.h"
+#include "QuickSort.h"
 using namespace std;
-Individual* execute(Individual* indPtr, Mutator* mPtr, int k){
-    mPtr->mutate(indPtr,k);
-    return indPtr;
-}
+
 int main(void){
-    Individual John;
-    Individual Jake;
-    int k1;
-    int k2;
-    string binarystr1;
-    string binarystr2;
-    cin >> binarystr1 >> k1 >> binarystr2 >> k2;
-    John.update_list(binarystr1);
-    Jake.update_list(binarystr2);
-    BitFlip Flip_bits;
-    Rearrange Change_order;
-    execute(&John,&Flip_bits,k1);
-    execute(&Jake,&Change_order,k2);
-    int max_ones = 0;
-    max_ones = Jake.getMaxOnes();
-    cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";    
+    vector<int> List_1 = {1,5,7,4,3,7,8,5,4,3,9,324,6576,34};
+    BubbleSort BubbleSorter;
+    List_1 = BubbleSorter.sort(List_1);
+    cout << "\n\n";
+    for (unsigned int k = 0; k < List_1.size(); k++){
+        cout << " " << List_1.at(k);
+    }
+    cout << "\n\n";
     return 0;
 }
