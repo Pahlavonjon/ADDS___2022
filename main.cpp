@@ -3,6 +3,7 @@
 #include "Individual.h"
 #include "Mutator.h"
 #include "BitFlip.h"
+#include "BitFlipProb.h"
 #include "Rearrange.h"
 using namespace std;
 Individual* execute(Individual* indPtr, Mutator* mPtr, int k){
@@ -21,10 +22,13 @@ int main(void){
     Jake.update_list(binarystr2);
     BitFlip Flip_bits;
     Rearrange Change_order;
+    BitFlipProb Probabilityy(0.7);
     execute(&John,&Flip_bits,k1);
     execute(&Jake,&Change_order,k2);
     int max_ones = 0;
     max_ones = Jake.getMaxOnes();
-    cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";    
+    cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";  
+    execute(&John,&Probabilityy,5);
+    cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";  
     return 0;
 }

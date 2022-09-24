@@ -21,13 +21,13 @@ string Individual::getString(){
     return binaryString;
 } //: The function outputs a binary string representation of the bitstring list (e.g.“01010100”).
 int Individual::getBit(int pos){
-    if (pos > 7 || pos < 0){
+    if (pos > getLength()-1 || pos < 0){
         return -1;
     }
     return (this->binaryString[pos]);
 } //: The function returns the bit value at position pos. It should return -1 if pos is out of bound..
 void Individual::flipBit(int pos){
-    if (pos <= 7 && pos >= 0){
+    if (pos <= (getLength()) && pos >= 0){
         if (binaryString.at(pos-1) == '0'){ 
             binaryString.at(pos-1) = '1';
         }
