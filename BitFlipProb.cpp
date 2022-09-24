@@ -8,6 +8,7 @@ BitFlipProb::BitFlipProb(double the_probability){
         this->probability = the_probability;
 }
 Individual* BitFlipProb::mutate(Individual* This_person,int k){
+    double p_int = (this->probability)*(6); 
     if (k < 1){
         return This_person;
     }
@@ -15,7 +16,7 @@ Individual* BitFlipProb::mutate(Individual* This_person,int k){
         k -= This_person->getLength();
     }
     for (int k = 0; k < This_person->getLength(); k++){
-        if (rand() > probability)
+        if (((rand()%6+1)) > 6-p_int )
             This_person->flipBit(k);
     }
     return This_person;
