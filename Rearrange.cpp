@@ -5,7 +5,7 @@ using namespace std;
 Rearrange::Rearrange(){}
 Individual* Rearrange::mutate(Individual* This_person,int k){
     if (k < 1){
-        return This_person;
+        k *= -1;
     }
     while (k > This_person->getLength()){
         k -= This_person->getLength();

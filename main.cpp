@@ -27,7 +27,7 @@ int main(void){
     execute(&Jake,&Change_order,k2);
     int max_ones = 0;
     max_ones = Jake.getMaxOnes();
-    cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";  
+    cout << John.getString() << " " << Jake.getString() << " " << max_ones << "\n";  
     // execute(&John,&Probabilityy,5);
     // cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";  
     return 0;
