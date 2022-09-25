@@ -10,9 +10,9 @@ BitFlipProb::BitFlipProb(double the_probability){
 }
 Individual* BitFlipProb::mutate(Individual* This_person,int k){
     double p_int = probability*6; 
-            cout << " the probabilty was " << p_int <<"\n";
+      //      cout << " the probabilty was " << p_int <<"\n";
     double threshold = 6-p_int;
-            cout << " the threshold was " << threshold <<"\n";
+       //     cout << " the threshold was " << threshold <<"\n";
     if (k < 1){
         return This_person;
     }
@@ -21,7 +21,7 @@ Individual* BitFlipProb::mutate(Individual* This_person,int k){
     }
     for (int j = 0; j < This_person->getLength(); j++){
         int num = (rand()%6+1);
-            cout << " the random was " << num <<"\n";
+        //    cout << " the random was " << num <<"\n";
         if ( num > (threshold )){
             This_person->flipBit(j);
         }

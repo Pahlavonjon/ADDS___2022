@@ -28,7 +28,7 @@ int main(void){
     int max_ones = 0;
     max_ones = Jake.getMaxOnes();
     cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";  
-    execute(&John,&Probabilityy,5);
-    cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";  
+    // execute(&John,&Probabilityy,5);
+    // cout << John.getString()<< " " << Jake.getString()<< " " << max_ones <<"\n";  
     return 0;
 }
