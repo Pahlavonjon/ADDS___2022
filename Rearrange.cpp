@@ -4,6 +4,8 @@
 using namespace std;
 Rearrange::Rearrange(){}
 Individual* Rearrange::mutate(Individual* This_person,int k){
+    if (k <= 0)
+        return This_person;
     if (k < 1){
         k *= -1;
     }

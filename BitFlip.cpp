@@ -2,6 +2,8 @@
 using namespace std;
 BitFlip::BitFlip(){}
 Individual* BitFlip::mutate(Individual* This_person,int k){
+    if (k <= 0)
+        return This_person;
     if (k < 1){
         k *= -1;
     }
