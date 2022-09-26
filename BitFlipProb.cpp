@@ -23,7 +23,7 @@ Individual* BitFlipProb::mutate(Individual* This_person,int k){
         int num = (rand()%6+1);
         //    cout << " the random was " << num <<"\n";
         if ( num > (threshold )){
-            This_person->flipBit(j);
+            This_person->flipBit(j+1);
         }
     }
     return This_person;
