@@ -41,9 +41,9 @@ int Individual::getMaxOnes(){
     bool a_one = false;
     bool on_a_steak = false;
     for (int k = 0; k < getLength(); k++){
-        if (binaryString[k] == '1')
+        if (binaryString.at(k) == '1')
             a_one = true;
-        if (binaryString[k] == '1' && binaryString[k+1] == '1'){ // , 
+        if (binaryString.at(k) == '1' && binaryString.at(k+1) == '1'){ // , 
             if (on_a_steak == false){
                 length_streak += 2;
                 on_a_steak = true;
