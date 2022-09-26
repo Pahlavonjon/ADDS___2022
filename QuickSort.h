@@ -5,7 +5,9 @@
 #include "Sort.h"
 class QuickSort : public Sort {
     private:
-        std::vector<std::string> sort_vector;
+        std::vector<int> sorted_vector;
+        int smaller_index;
+        int recursion_index;
     public:
         QuickSort();
         std::vector<int> sort(std::vector<int> list);
