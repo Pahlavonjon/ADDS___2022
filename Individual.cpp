@@ -15,6 +15,9 @@ Individual::Individual(int Binary_length){
     }
 }
 Individual::Individual(string Binary_string){
+    string copy = Binary_string;
+    Individual* another_one = new Individual(copy);
+    another_one->update_list(copy);
     this->binaryString = Binary_string;
 }
 string Individual::getString(){
@@ -24,7 +27,7 @@ int Individual::getBit(int pos){
     if (pos > getLength()-1 || pos < 0){
         return -1;
     }
-    return (this->binaryString[pos]);
+    return (this->binaryString.at(pos-1));
 } //: The function returns the bit value at position pos. It should return -1 if pos is out of bound..
 void Individual::flipBit(int pos){
     if (pos <= (getLength()) && pos >= 0){
