@@ -38,8 +38,11 @@ void Individual::flipBit(int pos){
 } //: The function takes in the position of the certain bit and flip the bit value.
 int Individual::getMaxOnes(){
     int length_streak = 0;
+    bool a_one = false;
     bool on_a_steak = false;
     for (int k = 0; k < getLength(); k++){
+        if (binaryString[k] == '1')
+            a_one = true;
         if (binaryString[k] == '1' && binaryString[k+1] == '1'){ // , 
             if (on_a_steak == false){
                 length_streak += 2;
@@ -53,7 +56,7 @@ int Individual::getMaxOnes(){
             on_a_steak = false;
         }
     }
-    if (length_streak == 0)
+    if (length_streak == 0 && a_one == true)
         length_streak = 1;
     return length_streak;
 } //: The function returns the longest consecutive sequence of ‘1’ digits in the list (e.g. calling the function on “1001110” will obtain 3).
