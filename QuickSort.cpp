@@ -60,8 +60,9 @@ vector<int> QuickSort::sort(vector<int> list){
     for (unsigned int k = 0; k < list.size(); k++){
         if (list.at(k) <= pivot){
             smaller_index++;
-            swap(list.at(smaller_index),list.at(k)));
+            swap(list.at(smaller_index),list.at(k));
         }
     }
+    return list;
         
 }
