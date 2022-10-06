@@ -6,12 +6,10 @@ bool RecursiveBinarySearch::search(std::vector<int> The_Vector, int get_me_this_
     int the_middle_index = 0;
     if ((The_Vector.at(0) == get_me_this_number ))
         return true;
-
-    if ((The_Vector.size())%2 == 0) // size == 8
-        the_middle_index = (The_Vector.size())/2 -1 ; // middle = 3
-    else if ((The_Vector.size())%2 != 0) // size == 9
-        the_middle_index = (The_Vector.size())/2; // middle = 4
-
+    if ((The_Vector.size())%2 == 0) 
+        the_middle_index = (The_Vector.size())/2 -1 ; 
+    else if ((The_Vector.size())%2 != 0) 
+        the_middle_index = (The_Vector.size())/2;
     the_middle = The_Vector.at(the_middle_index);
     if (get_me_this_number == The_Vector.at(the_middle_index))
         return true;

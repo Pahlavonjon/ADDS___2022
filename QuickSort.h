@@ -6,8 +6,8 @@
 class QuickSort : public Sort {
     private:
         std::vector<int> sorted_vector;
-        int smaller_index;
-        int recursion_index;
+        int low;
+        int high;
     public:
         QuickSort();
         std::vector<int> sort(std::vector<int> list);
