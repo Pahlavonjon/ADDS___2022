@@ -4,11 +4,11 @@ RecursiveBinarySearch::RecursiveBinarySearch(){}
 bool RecursiveBinarySearch::search(std::vector<int> The_Vector, int get_me_this_number){
     int the_middle = 0;
     int the_middle_index = 0;
-    if ((The_Vector.at(0) == get_me_this_number )){
+    if ((The_Vector.at(0) == get_me_this_number)){
         return true; 
-        if (The_Vector.at(0) != get_me_this_number)
-            return false;
     }
+    if (The_Vector.at(0) != get_me_this_number && The_Vector.size() == 1)
+            return false;
     if ((The_Vector.size())%2 == 0) 
         the_middle_index = (The_Vector.size())/2 -1 ; 
     else if ((The_Vector.size())%2 != 0) 
