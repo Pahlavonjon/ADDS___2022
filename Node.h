@@ -3,7 +3,7 @@
 class Node {
     private:
         int data;
-        Node* pointer_node;
+        Node* next_node;
     public:
         Node();
         void set_data(int new_data);
