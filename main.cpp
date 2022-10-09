@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <limits>
 #include "Sort.h"
 #include "BubbleSort.h"
 #include "QuickSort.h"
@@ -30,12 +31,23 @@ int main(void){
     BubbleSort BubbleSorter;
     QuickSort QuickSorter;
     RecursiveBinarySearch Sucher;
-    int length = 8;
-    int array[length];
+    // int length = 8;
+    // int array[length];
     vector<int> the_list;
-    cin >> array[0] >> array[1] >> array[2] >> array[3] >>  array[4] >> array[5] >> array[6] >> array[7];
-    for (int k = 0; k < 8; k++){
-      the_list.push_back(array[k]);
+    // cin >> array[0] >> array[1] >> array[2] >> array[3] >>  array[4] >> array[5] >> array[6] >> array[7];
+    // for (int k = 0; k < 8; k++){
+    //   the_list.push_back(array[k]);
+    // }
+    int num = 0;
+    while (cin >> num){
+        if (cin.fail()){
+            cin.clear();
+            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            break;
+        }
+        else {
+           the_list.push_back(num);
+        }
     }
     the_list = QuickSorter.sort(the_list);
     bool result = Sucher.search(the_list,1);
@@ -44,6 +56,13 @@ int main(void){
         Result = "false";
     else if (result == true)
         Result = "true";
-    cout << Result << " " << the_list.at(0) << " " << the_list.at(1) << " " << the_list.at(2) << " " << the_list.at(3) << " " << the_list.at(4) << " " << the_list.at(5) << " " << the_list.at(6) << " " << the_list.at(7)<<"\n"; 
+    unsigned int index = 0;
+    while (index < the_list.size()){
+        if (index == 0)
+            cout << Result;
+        cout << " " << the_list.at(index);
+        if (index == the_list.size()-1)
+            cout << " " << the_list.at(index) <<"\n";
+    }
     return 0;
 }
