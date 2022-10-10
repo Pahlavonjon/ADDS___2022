@@ -23,7 +23,6 @@ QuickSort::QuickSort(){this->low = 0; this->high = 0; this->start = 0;}
             sorted_vector.push_back(list.at(1));
             return sorted_vector;
         }
-     //   cout << "\n out of if statements\n";
         std::vector<int> smaller_than_pivot;
         std::vector<int> bigger_than_pivot;
         pivot_value = list.at(pivot_index);

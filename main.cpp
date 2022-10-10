@@ -31,13 +31,7 @@ int main(void){
     BubbleSort BubbleSorter;
     QuickSort QuickSorter;
     RecursiveBinarySearch Sucher;
-    // int length = 8;
-    // int array[length];
     vector<int> the_list;
-    // cin >> array[0] >> array[1] >> array[2] >> array[3] >>  array[4] >> array[5] >> array[6] >> array[7];
-    // for (int k = 0; k < 8; k++){
-    //   the_list.push_back(array[k]);
-    // }
     int num = 0;
     while (true){
         cin >> num;
