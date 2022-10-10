@@ -39,14 +39,11 @@ int main(void){
     //   the_list.push_back(array[k]);
     // }
     int num = 0;
-    while (cin >> num){
-        if (cin.fail()){
-            cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    while (true){
+        cin >> num;
+        the_list.push_back(num);
+        if (cin.peek() == '\n'){
             break;
-        }
-        else {
-           the_list.push_back(num);
         }
     }
     the_list = QuickSorter.sort(the_list);
@@ -58,11 +55,13 @@ int main(void){
         Result = "true";
     unsigned int index = 0;
     while (index < the_list.size()){
-        if (index == 0)
+        if (index == 0){
             cout << Result;
+        }
         cout << " " << the_list.at(index);
         if (index == the_list.size()-1)
-            cout << " " << the_list.at(index) <<"\n";
+            cout <<"\n";
+        index++;
     }
     return 0;
 }
