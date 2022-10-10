@@ -23,6 +23,7 @@ QuickSort::QuickSort(){this->low = 0; this->high = 0; this->start = 0;}
             sorted_vector.push_back(list.at(1));
             return sorted_vector;
         }
+     //   cout << "\n out of if statements\n";
         std::vector<int> smaller_than_pivot;
         std::vector<int> bigger_than_pivot;
         pivot_value = list.at(pivot_index);
@@ -30,11 +31,13 @@ QuickSort::QuickSort(){this->low = 0; this->high = 0; this->start = 0;}
         for (unsigned int k = 0; k < list.size(); k++){
             if (list.at(k) > pivot_value)
                 bigger_than_pivot.push_back(list.at(k));
-            else if (list.at(k) < pivot_value)
+            else if (list.at(k) <= pivot_value)
                 smaller_than_pivot.push_back(list.at(k)); 
         }
-        sort(smaller_than_pivot); // recursion
+        if (smaller_than_pivot.size() != 0)
+            sort(smaller_than_pivot); // recursion
         sorted_vector.push_back(pivot_value);
-        sort(bigger_than_pivot); // recursion
+        if (bigger_than_pivot.size() != 0)
+            sort(bigger_than_pivot); // recursion
         return sorted_vector;
     }
