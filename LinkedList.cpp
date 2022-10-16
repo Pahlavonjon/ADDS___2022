@@ -55,12 +55,17 @@ using namespace std;
                 return;
             }
             temporary = head;
+            int re_indexing = 0;
             while (temporary->get_pointer() != nullptr){
                 temporary = temporary->get_pointer();
-                if ((size_of_list -= 1) == position){
+                re_indexing++;
+                cout << " re_indexing " << re_indexing<< "   " << position <<"\n";
+                if (re_indexing == position){
                     Node* new_Node_here = new Node;
                     new_Node_here->set_data(newItem);
-        //            new_Node_here->set_pointer();
+                    new_Node_here->set_pointer(temporary->get_pointer());
+                    temporary->set_pointer(new_Node_here);
+                    return;
                 }
             }
         }
@@ -83,7 +88,32 @@ using namespace std;
         // }
         void LinkedList::deleteFront(){}
         void LinkedList::deleteEnd(){}
-        void LinkedList::deletePosition(int position){}
+        void LinkedList::deletePosition(int position){
+            Node* temporary_1 = head; 
+            Node* temporary_2 = nullptr;
+            int linked_list_length = 0;
+            if (head == nullptr)
+                return;
+            while (temporary_1 != nullptr){
+                temporary_1 = temporary_1->get_pointer();
+                linked_list_length++;
+            }
+            if (linked_list_length < position || linked_list_length < 1)
+                cout << "outside range";
+            if (position == 1){
+                head = head->get_pointer();
+                delete temporary_1;
+                return;
+            }
+            while (position-- > 1){
+                temporary_2 = temporary_1;
+                temporary_1 = temporary_1->get_pointer();
+            }
+            Node* pointer;
+            pointer = temporary_2->get_pointer(); 
+            pointer = temporary_1->get_pointer();
+            delete temporary_1;
+        }
         int LinkedList::getItem(int position){return position;}
         void LinkedList::printItems(){
             Node *temporary = head;
