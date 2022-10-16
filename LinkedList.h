@@ -4,7 +4,7 @@
 class LinkedList {
     private:
         Node* head;
-       // Node* next_node;
+        Node* next_node;
     public:
         LinkedList();
         LinkedList(int* array_integers, int length_array);
