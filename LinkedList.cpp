@@ -1,5 +1,6 @@
 #include "LinkedList.h" // only node contains the pointer to next node but linked list contain the pointer to the head
 #include <cstddef> 
+#include <limits>
 #include <iostream>
 using namespace std;
         LinkedList::LinkedList(){head = nullptr;}
@@ -50,17 +51,26 @@ using namespace std;
                 addEnd(newItem);
                 return;
             }
-            else if (position < 1){
+            if (position <= 1 || size_of_list <= 1){
                 addFront(newItem);
                 return;
             }
-            temporary = head;
+            temporary = head; // this holds the node which is to be moved up or down
+            Node* second_temporary;
             int re_indexing = 0;
             while (temporary->get_pointer() != nullptr){
+                second_temporary = temporary;
                 temporary = temporary->get_pointer();
                 re_indexing++;
                 cout << " re_indexing " << re_indexing<< "   " << position <<"\n";
-                if (re_indexing == position){
+                if (position == re_indexing){
+                    Node* new_Node_here = new Node;
+                    second_temporary->get_pointer() = new_Node_here;
+                    new_Node_here->set_pointer(second_temporary->get_pointer());
+
+                }
+                    
+                if (re_indexing == position-1){
                     Node* new_Node_here = new Node;
                     new_Node_here->set_data(newItem);
                     new_Node_here->set_pointer(temporary->get_pointer());
@@ -114,7 +124,19 @@ using namespace std;
             pointer = temporary_1->get_pointer();
             delete temporary_1;
         }
-        int LinkedList::getItem(int position){return position;}
+        int LinkedList::getItem(int position){
+            Node* temporary = head;
+            int size = 0;
+            while (temporary->get_pointer() != nullptr){
+                temporary = temporary->get_pointer();
+                size++;
+                if (position == size){
+                    cout <<temporary->get_data()<< " ";
+                    return position;
+                }
+            }
+            return position;
+        }
         void LinkedList::printItems(){
             Node *temporary = head;
 
