@@ -15,7 +15,7 @@ using namespace std;
             }
         }
         LinkedList::~LinkedList(){
-
+            // delete!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         }
         void LinkedList::addFront(int newItem){
             Node* next_node = new Node;
@@ -31,7 +31,6 @@ using namespace std;
                 head = new_Node;
                 return;
             }
-
             Node *temporary = head;
             while (temporary->get_pointer() != nullptr){
                 temporary = temporary->get_pointer();
@@ -40,9 +39,9 @@ using namespace std;
 
         }
         void LinkedList::addAtPosition(int position, int newItem){
-            
+    
             Node *temporary = head;
-            int size_of_list = 1;
+            int size_of_list = 0;
             while (temporary->get_pointer() != nullptr){
                 temporary = temporary->get_pointer();
                 size_of_list++;
@@ -65,7 +64,8 @@ using namespace std;
                 cout << " re_indexing " << re_indexing<< "   " << position <<"\n";
                 if (position == re_indexing){
                     Node* new_Node_here = new Node;
-                    second_temporary->get_pointer() = new_Node_here;
+                    new_Node_here->set_data(newItem);
+                  //  second_temporary->get_pointer() = new_Node_here;
                     new_Node_here->set_pointer(second_temporary->get_pointer());
 
                 }
@@ -84,20 +84,47 @@ using namespace std;
             if (head->get_data() != item){
                 ((head->get_pointer())->get_pointer());
             }
-          //  search_List(head,&item,*position);
             cout << " " << position <<"\n";
             return position;
         }
-        // Node* search_List(Node* this_node, int* item, int *index){
-        //     if (this_node->get_data() == *item){
-        //         return this_node;
-        //     }
-        //     else if (this_node->get_pointer == nullptr )
-        //         *index += 1;
-        //     return search_List(this_node->get_pointer(), item, index+1);
-        // }
-        void LinkedList::deleteFront(){}
-        void LinkedList::deleteEnd(){}
+        void LinkedList::deleteFront(){
+            Node* temporary = head;
+            head = temporary->get_pointer();
+            delete temporary;
+            return;
+        }
+        void LinkedList::deleteEnd(){
+            Node* temporary = head;
+            if (temporary->get_pointer() == nullptr){
+                head = nullptr;
+                return;
+            }
+            int length = 0;
+            while (temporary->get_pointer() != nullptr){
+                temporary = temporary->get_pointer();
+                length++;
+            //    cout << "delete end " << length <<"\n";
+            }
+            temporary = head;
+            
+            if (length == 1){
+                delete temporary->get_pointer();
+                temporary->set_pointer(nullptr);
+                return;
+            }
+            int end = length-1;
+          //  cout << "\nthe end " << end;
+            length = 0;
+            while (temporary->get_pointer() != nullptr){
+                temporary = temporary->get_pointer();
+                length++;
+                if (length == end){
+                    delete temporary->get_pointer();
+                    temporary->set_pointer(nullptr);
+                    return;
+                }
+            }
+        }
         void LinkedList::deletePosition(int position){
             Node* temporary_1 = head; 
             Node* temporary_2 = nullptr;
@@ -107,7 +134,12 @@ using namespace std;
             while (temporary_1 != nullptr){
                 temporary_1 = temporary_1->get_pointer();
                 linked_list_length++;
+              //  cout << " " << linked_list_length;
             }
+            temporary_1 = head;
+            if (position < 1 || position > linked_list_length)
+                return;
+         //   cout << "\n";
             if (linked_list_length < position || linked_list_length < 1)
                 cout << "outside range";
             if (position == 1){
@@ -115,13 +147,15 @@ using namespace std;
                 delete temporary_1;
                 return;
             }
+            if (position == linked_list_length){
+                deleteEnd();
+                return;
+            }
             while (position-- > 1){
                 temporary_2 = temporary_1;
                 temporary_1 = temporary_1->get_pointer();
             }
-            Node* pointer;
-            pointer = temporary_2->get_pointer(); 
-            pointer = temporary_1->get_pointer();
+            temporary_2->set_pointer(temporary_1->get_pointer());
             delete temporary_1;
         }
         int LinkedList::getItem(int position){
@@ -131,20 +165,19 @@ using namespace std;
                 temporary = temporary->get_pointer();
                 size++;
                 if (position == size){
-                    cout <<temporary->get_data()<< " ";
+                    cout << temporary->get_data() << " ";
                     return position;
                 }
             }
-            return position;
+            cout << std::numeric_limits < int >::max() << " ";
+            return std::numeric_limits < int >::max();
         }
         void LinkedList::printItems(){
             Node *temporary = head;
-
             if (head == NULL)
                 cout << "there is no list\n";
             while (temporary != NULL){
                 cout << " " << temporary->get_data();
                 temporary = temporary->get_pointer();
             }
-
         }

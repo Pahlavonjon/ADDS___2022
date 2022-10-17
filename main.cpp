@@ -25,7 +25,14 @@ int main(void){
     LinkedList the_third_list(the_list_copy_array,the_list.size());
     cout << "\n\n The items are: \n\n\n";
     the_third_list.addAtPosition(3,9);
-  //  the_third_list.deletePosition(2);
+  //  the_third_list.addEnd(9);
+ //   the_third_list.addFront(9);
+    //  the_third_list.deleteFront();
+   // the_third_list.deleteEnd();
+   // the_third_list.deletePosition(6);
+    //the_third_list.deletePosition(3);
+    cout << "\n\n";
+    cout << " here is the numbers ";
     the_third_list.printItems();
     cout << "\n\n\n";
     return 0;
