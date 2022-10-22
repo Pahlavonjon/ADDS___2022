@@ -96,12 +96,12 @@ int main(void){
             number_brackets++;
         }
     }
-    if (number_brackets%2 != 0){
+    if (number_brackets%2 != 0 || (user_input.at(0) >= 48 && user_input.at(0) <= 57)){
         cout << "Error\n";
         return 0;
     }
     for (int k = 1; k < operations_length; k++){
-        if ((user_input[k] == '+' || user_input[k] == '-' || user_input[k] == '*' || user_input[k] == '/') && (user_input[k-1] == '+' || user_input[k-1] == '-' || user_input[k-1] == '*' || user_input[k-1] == '/')){
+        if ((user_input[k] == '+' || user_input[k] == '-' || user_input[k] == '*' || user_input[k] == '/' || user_input[k] == ' ') && (user_input[k-1] == '+' || user_input[k-1] == '-' || user_input[k-1] == '*' || user_input[k-1] == '/' || user_input[k] == ' ')){
             valid_input = true;
         }
         else {
