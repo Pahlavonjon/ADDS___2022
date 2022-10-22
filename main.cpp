@@ -12,7 +12,7 @@ void calculate(string user_input, string the_operations, int operations_length, 
         if (the_operations[o_index] == '+'){
             if (k == 1) {
                 *the_result = ((the_number_vector[k-1]) + (the_number_vector[k]));
-          //      cout << "\n the result is  +  " << *the_result<<"\n";
+            //    cout << "\n the result is  +  " << *the_result<<"\n";
             }
             else if (k >= 2){ 
                 *the_result += (the_number_vector.at(k));
@@ -83,8 +83,6 @@ int main(void){
     int operations_length = 0;
     int result = 0;
     int number_brackets = 0;
-    bool valid_input = true;
-   // int operations_length_copy = 0;
     string user_input_copy = "";
     for (unsigned int k = 0; k < user_input.length(); k++){
         if (user_input[k] == '+' || user_input[k] == '-' || user_input[k] == '*' || user_input[k] == '/'){
@@ -100,18 +98,6 @@ int main(void){
         cout << "Error\n";
         return 0;
     }
-    for (int k = 1; k < operations_length; k++){
-        if ((user_input[k] == '+' || user_input[k] == '-' || user_input[k] == '*' || user_input[k] == '/' || user_input[k] == ' ') && (user_input[k-1] == '+' || user_input[k-1] == '-' || user_input[k-1] == '*' || user_input[k-1] == '/' || user_input[k] == ' ')){
-            valid_input = true;
-        }
-        else {
-            valid_input = false;
-            if (valid_input == false){
-                cout << "Error\n";
-                return 0;
-            }
-        }
-    }
     for (unsigned int k = operations_length-1; k < the_operations.length(); k++){
         if (the_operations[k] == ' ')
             the_operations[k] = 0;
@@ -124,6 +110,14 @@ int main(void){
             the_operations_copy_incrementor++;
         }
     }
+    for (unsigned int k = 1; k < the_operations.size(); k++){
+        if ((the_operations_copy[k-1] == '-' || the_operations_copy[k-1] == '+') && (the_operations_copy[k] == '/' || the_operations_copy[k] == '*'))
+            swap(the_operations_copy[k-1],the_operations_copy[k]);
+    }
+    // for (unsigned int k = 0; k < the_operations_copy.size(); k++){
+    //     if (the_operations[k] != ' ' && the_operations[k] != 0)
+    //         cout << " opearation   " << the_operations_copy[k];
+    // }
     vector<int> the_number_vector;
     for (unsigned int k = 0; k < user_input.length(); k++){
         if (user_input.at(k) >= 48 && user_input.at(k) <= 57){
@@ -136,7 +130,9 @@ int main(void){
         cout << "Error\n";
         return 0;
     }
+    // if (user_input[0] == '*')
     calculate(user_input,the_operations_copy, operations_length,the_number_vector,&result);
+   // cout << "\n\n";
     for (unsigned int k = 1; k < the_number_vector.size(); k++){
         if (the_number_vector.size() == 2){
             if (k == 1)
@@ -151,17 +147,17 @@ int main(void){
         }
         else if (the_number_vector.size() == 4){
             if (k == 1)
-                cout <<"(" <<"("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+                cout <<"("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
             else if (k == the_number_vector.size()-1){
                 cout << the_operations_copy.at(k-1) << the_number_vector.at(k);
             }
             else {
-                cout << the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+                cout << the_operations_copy.at(k-1) << the_number_vector.at(k); //<< ")";
             } 
         }
         else if (the_number_vector.size() == 5){
             if (k == 1)
-                cout <<"("<<"(" <<"("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+                cout  <<"("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
             else if (k == the_number_vector.size()-1){
                 cout << the_operations_copy.at(k-1) << the_number_vector.at(k);
             }
@@ -186,4 +182,5 @@ int main(void){
     }
     cout << "=" << result <<"\n";
     return 0;
+    // what about 1 / 6 = 0 they didnt mention floating points 
 }
