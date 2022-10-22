@@ -134,7 +134,7 @@ int main(void){
     for (unsigned int k = 1; k < the_number_vector.size(); k++){
         if (the_number_vector.size() == 2){
             if (k == 1)
-                cout << "("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+                cout <<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k);
         }
         else if (the_number_vector.size() == 3){
             if (k == 1)
