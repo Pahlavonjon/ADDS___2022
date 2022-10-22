@@ -5,67 +5,67 @@ using namespace std;
 
 void calculate(string user_input, string the_operations, int operations_length, vector<int> the_number_vector, int *the_result){
     int o_index = 0;
-    for (unsigned int k = 0; k < the_operations.length(); k++){
-        cout << " " << the_operations[k];
-    }
+    // for (unsigned int k = 0; k < the_operations.length(); k++){
+    //   //  cout << " " << the_operations[k];
+    // }
     bool end_of_operations = false;
     int pos_length = the_number_vector.size();
     for (int k = 1; k < pos_length; k++){
-        cout << " new iteration\n";
+     //   cout << " new iteration\n";
         if (the_operations[o_index] == '+'){
             if (k == 1) {
                 *the_result = ((the_number_vector[k-1]) + (the_number_vector[k]));
-                cout << "\n the result is  +  " << *the_result<<"\n";
+          //      cout << "\n the result is  +  " << *the_result<<"\n";
             }
             else if (k >= 2){ 
                 *the_result += (the_number_vector.at(k));
-                cout << "\n here  added "<<*the_result<< "\n";
+         //       cout << "\n here  added "<<*the_result<< "\n";
             }
             else if (k == pos_length-1 && end_of_operations == false){
                 *the_result += (the_number_vector[k]);
-                cout << "\n here\n";
+         //       cout << "\n here\n";
             }
         }
         if (the_operations[o_index] == '-'){
             if (k == 1) {
                 *the_result = (((the_number_vector[k-1])) - (the_number_vector[k]));
-                cout << "\n the result is  -  " << *the_result<<"\n";
+        //        cout << "\n the result is  -  " << *the_result<<"\n";
             }
             else if (k >= 2){ 
                 *the_result -= ((the_number_vector[k]));
-                cout << "\n here  minused "<<*the_result<<"\n";
+           //     cout << "\n here  minused "<<*the_result<<"\n";
             }
             else if (k == pos_length-1 && end_of_operations == false){
                 *the_result -= ((the_number_vector[k]));
-                cout << "\n the result is - " << *the_result<<"\n";
+            //    cout << "\n the result is - " << *the_result<<"\n";
             }
         }
         if (the_operations[o_index] == '*'){
             if (k == 1) {
                 *the_result = (((the_number_vector[k-1])) * (the_number_vector[k]));
-                cout << "\n the result is  *  " << *the_result<<"\n";
+           //     cout << "\n the result is  *  " << *the_result<<"\n";
             }
             else if (k >= 2){ 
                 *the_result *= ((the_number_vector[k]));
-                cout << "\n here  multiplied "<<*the_result<<"\n";
+           //     cout << "\n here  multiplied "<<*the_result<<"\n";
             }
             else if (k == pos_length-1 && end_of_operations == false){
                 *the_result *= ((the_number_vector[k]));
-                cout << "\n the result is * " << *the_result<<"\n";
+          //      cout << "\n the result is * " << *the_result<<"\n";
             }
         }
         if (the_operations[o_index] == '/'){
             if (k == 1) {
                 *the_result = (((the_number_vector[k-1])) / (the_number_vector[k]));
-                cout << "\n the result is  /  " << *the_result<<"\n";
+           //     cout << "\n the result is  /  " << *the_result<<"\n";
             }
             else if (k >= 2){ 
                 *the_result /= ((the_number_vector[k]));
-                cout << "\n here  divided "<<*the_result<<"\n";
+         //       cout << "\n here  divided "<<*the_result<<"\n";
             }
             else if (k == pos_length-1 && end_of_operations == false){
                 *the_result /= ((the_number_vector[k]));
-                cout << "\n the result is / " << *the_result<<"\n";
+       //         cout << "\n the result is / " << *the_result<<"\n";
             }
         }
         if (o_index < operations_length-1){
@@ -130,8 +130,40 @@ int main(void){
     }
     // + = 43, - = 45, / = 47, * = 42;
     calculate(user_input,the_operations_copy, operations_length,the_number_vector,&result);
-    cout << "\n\n   The result is:  " << result <<"\n";
- //   cout << " operations length = " << operations_length << "\n\n";
-    cout << "\n\n";
+   //  cout << "\n\n";
+    for (unsigned int k = 1; k < the_number_vector.size(); k++){
+        if (the_number_vector.size() == 2){
+            if (k == 1)
+                cout << "("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+        }
+        else if (the_number_vector.size() == 3){
+            if (k == 1)
+                cout << "("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+            else {
+                cout << the_operations_copy.at(k-1) << the_number_vector.at(k);
+            } 
+        }
+        else if (the_number_vector.size() == 4){
+            if (k == 1)
+                cout <<"(" <<"("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+            else if (k == the_number_vector.size()-1){
+                cout << the_operations_copy.at(k-1) << the_number_vector.at(k);
+            }
+            else {
+                cout << the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+            } 
+        }
+        else if (the_number_vector.size() == 5){
+            if (k == 1)
+                cout <<"("<<"(" <<"("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+            else if (k == the_number_vector.size()-1){
+                cout << the_operations_copy.at(k-1) << the_number_vector.at(k);
+            }
+            else {
+                cout << the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+            } 
+        }
+    }
+    cout << "=" << result <<"\n";
     return 0;
 }
