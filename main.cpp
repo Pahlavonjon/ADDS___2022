@@ -5,9 +5,6 @@ using namespace std;
 
 void calculate(string user_input, string the_operations, int operations_length, vector<int> the_number_vector, int *the_result){
     int o_index = 0;
-    // for (unsigned int k = 0; k < the_operations.length(); k++){
-    //   //  cout << " " << the_operations[k];
-    // }
     bool end_of_operations = false;
     int pos_length = the_number_vector.size();
     for (int k = 1; k < pos_length; k++){
@@ -107,11 +104,6 @@ int main(void){
             the_operations_copy_incrementor++;
         }
     }
-    // cout << "\n\n the operations in reverse: \n";
-    // for (int k = 0; k < the_operations_copy_incrementor; k++){
-    //     if (the_operations[k] != ' ' && the_operations[k] != 0)
-    //         cout << " " << the_operations_copy[k];
-    // }
     vector<int> the_number_vector;
     for (unsigned int k = 0; k < user_input.length(); k++){
         if (user_input.at(k) >= 48 && user_input.at(k) <= 57){
@@ -119,18 +111,12 @@ int main(void){
             the_number_vector.push_back(((int)the_numbers[k])-48);
         }
     }
-    // cout << " the vector numbers \n\n";
-    // for (unsigned int k = 0; k < the_number_vector.size(); k++){
-    //         cout << "  " << the_number_vector.at(k);
-    // }
     int the_number_vector_length = the_number_vector.size();
     if (the_number_vector_length != operations_length+1){
         cout << "Error\n";
         return 0;
     }
-    // + = 43, - = 45, / = 47, * = 42;
     calculate(user_input,the_operations_copy, operations_length,the_number_vector,&result);
-   //  cout << "\n\n";
     for (unsigned int k = 1; k < the_number_vector.size(); k++){
         if (the_number_vector.size() == 2){
             if (k == 1)
@@ -156,6 +142,20 @@ int main(void){
         else if (the_number_vector.size() == 5){
             if (k == 1)
                 cout <<"("<<"(" <<"("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+            else if (k == the_number_vector.size()-1){
+                cout << the_operations_copy.at(k-1) << the_number_vector.at(k);
+            }
+            else {
+                cout << the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+            } 
+        }
+        else if (the_number_vector.size() > 5){
+            if (k == 1){
+                for (unsigned int j = 0; j < the_number_vector.size()-3; j++){
+                    cout << "(";
+                }
+                cout << "("<<the_number_vector.at(k-1)<< the_operations_copy.at(k-1) << the_number_vector.at(k) << ")";
+            }
             else if (k == the_number_vector.size()-1){
                 cout << the_operations_copy.at(k-1) << the_number_vector.at(k);
             }
