@@ -82,6 +82,9 @@ int main(void){
     string the_numbers = "                                                                                                                                                                                        ";
     int operations_length = 0;
     int result = 0;
+    int number_brackets = 0;
+    bool valid_input = true;
+   // int operations_length_copy = 0;
     string user_input_copy = "";
     for (unsigned int k = 0; k < user_input.length(); k++){
         if (user_input[k] == '+' || user_input[k] == '-' || user_input[k] == '*' || user_input[k] == '/'){
@@ -90,6 +93,23 @@ int main(void){
         }
         if (user_input[k] == '(' || user_input[k] == ')'){
             user_input[k] = 0;
+            number_brackets++;
+        }
+    }
+    if (number_brackets%2 != 0){
+        cout << "Error\n";
+        return 0;
+    }
+    for (int k = 1; k < operations_length; k++){
+        if ((user_input[k] == '+' || user_input[k] == '-' || user_input[k] == '*' || user_input[k] == '/') && (user_input[k-1] == '+' || user_input[k-1] == '-' || user_input[k-1] == '*' || user_input[k-1] == '/')){
+            valid_input = true;
+        }
+        else {
+            valid_input = false;
+            if (valid_input == false){
+                cout << "Error\n";
+                return 0;
+            }
         }
     }
     for (unsigned int k = operations_length-1; k < the_operations.length(); k++){
