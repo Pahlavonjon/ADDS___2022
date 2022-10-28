@@ -1,3 +1,3 @@
 compile:
-	g++ -o main.out -std=c++11 -O2 -Wall *.cpp
-	./main.out
+	g++ practise_week3.cpp -Wall -o a.out
+	./a.out
